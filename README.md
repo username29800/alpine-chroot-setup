@@ -57,7 +57,7 @@ vncserver :[port]
 $ ./pinit [user]
 for proot
 
-# ./cinit [user]
+\# ./cinit [user]
 for chroot (with root previleges)
 
 $ ./sndsrv
