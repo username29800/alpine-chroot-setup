@@ -53,16 +53,16 @@ echo "#\!/bin/sh" > /cinit
 echo 'mount --bind /dev dev' >> /cinit
 echo 'mount --bind /proc proc' >> /cinit
 echo 'mount --bind /sys sys' >> /cinit
-echo 'chroot . /bin/su -c /initpty root' >> /cinit
+echo 'chroot . /bin/su -c "'/initpty \$1 \$2'" root' >> /cinit
 echo 'umount dev' >> /cinit
 echo 'umount proc' >> /cinit
 echo 'umount sys' >> /cinit
 chmod 755 /cinit
 echo "#\!/bin/sh" > /initpty
-echo "\$1mount -t devpts devpts /dev/pts" >> /initpty
+echo '"$2"'"mount -t devpts devpts /dev/pts" >> /initpty
 echo "chmod 666 /dev/pts/ptmx" >> /initpty
-echo "su -l user" >> /initpty
-echo "\$1umount /dev/pts" >> /initpty
+echo "su -l "'"$1"' >> /initpty
+echo '"$2"'"umount /dev/pts" >> /initpty
 chmod 744 /initpty
 echo 'SendPrimary=0' >> /etc/tigervnc/vncserver-config-mandatory
 echo "#\!/bin/sh" > /home/user/theme
