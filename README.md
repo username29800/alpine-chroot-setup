@@ -52,6 +52,18 @@ vncserver :[port]
 
 - Connect with VNC viewer to see the desktop.
 
+- To login as 'user' to start using the desktop experience, press Ctrl-d to exit, then
+```bash
+$ ./pinit [user]
+for proot
+
+# ./cinit [user]
+for chroot (with root previleges)
+
+$ ./sndsrv
+make sure to run this before chroot/prrot for better sound experiences
+```
+
 ---
 
 ## File Structure
