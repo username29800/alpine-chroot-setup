@@ -22,6 +22,7 @@ echo vncpasswd
 su -c vncpasswd user
 sed -i "$(cat /etc/sudoers | grep -n '^root ALL' | head -n1 | cut -d: -f-1)"a"user ALL=(ALL:ALL) ALL" /etc/sudoers
 cd /home/user
+mkdir Downloads Documents Pictures Music Videos Projects
 mkdir -p .config/tigervnc
 echo 'export GTK_IM_MODULE=ibus' > .bashrc
 echo 'export QT_IM_MODULE=ibus' >> .bashrc
@@ -52,11 +53,17 @@ echo "#\!/bin/sh" > /cinit
 echo 'mount --bind /dev dev' >> /cinit
 echo 'mount --bind /proc proc' >> /cinit
 echo 'mount --bind /sys sys' >> /cinit
-echo 'chroot . /bin/su -l $1' >> /cinit
+echo 'chroot . /bin/su -c /initpty root' >> /cinit
 echo 'umount dev' >> /cinit
 echo 'umount proc' >> /cinit
 echo 'umount sys' >> /cinit
 chmod 755 /cinit
+echo "#\!/bin/sh" > /initpty
+echo "mount -t devpts devpts /dev/pts" >> /initpty
+echo "chmod 666 /dev/pts/ptmx" >> /initpty
+echo "su -l user" >> /initpty
+echo "umount /dev/pts" >> /initpty
+chmod 744 /initpty
 echo 'SendPrimary=0' >> /etc/tigervnc/vncserver-config-mandatory
 echo "#\!/bin/sh" > /home/user/theme
 echo 'safefox https://www.pling.com/p/1267246/ &' >> /home/user/theme
