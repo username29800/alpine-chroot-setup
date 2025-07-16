@@ -1,0 +1,2 @@
+#\!/bin/sh
+proot -b /dev -b mem:/dev/shm -b /proc -b /sys -r . -0 -l --sysvipc /bin/su -l $1
