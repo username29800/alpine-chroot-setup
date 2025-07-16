@@ -59,10 +59,10 @@ echo 'umount proc' >> /cinit
 echo 'umount sys' >> /cinit
 chmod 755 /cinit
 echo "#\!/bin/sh" > /initpty
-echo "mount -t devpts devpts /dev/pts" >> /initpty
+echo "\$1mount -t devpts devpts /dev/pts" >> /initpty
 echo "chmod 666 /dev/pts/ptmx" >> /initpty
 echo "su -l user" >> /initpty
-echo "umount /dev/pts" >> /initpty
+echo "\$1umount /dev/pts" >> /initpty
 chmod 744 /initpty
 echo 'SendPrimary=0' >> /etc/tigervnc/vncserver-config-mandatory
 echo "#\!/bin/sh" > /home/user/theme
