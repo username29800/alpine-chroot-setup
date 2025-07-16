@@ -31,7 +31,7 @@ It includes theming, fonts, developer tools, and CJK input support via ibus. Per
 
 1. Make sure your Alpine base is installed (e.g. from `alpine-minirootfs`). This can be downloaded from alpine linux official homepage.  
 2. Place this script (e.g. `setup.sh`) in your Alpine root filesystem.
-3. Make it executable by 'chmod +x setup.sh' or just run it using 'sh setup.sh'.
+3. Make it executable by 'chmod +x setup.sh' or (if you've done chroot) just run it using 'sh setup.sh'.
 4. Chroot(or proot) into the new root.
 5. Run as root: ./setup.sh
 
