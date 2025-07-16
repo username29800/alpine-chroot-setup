@@ -5,7 +5,7 @@ A setup and config automation for alpine linux minirootfs. With Bring-Your-Own-R
 
 This is an automated shell script to set up a **full-featured Alpine Linux desktop** environment using the **MATE** desktop and **TigerVNC**, designed for lightweight remote or local use.
 
-It includes theming, fonts, developer tools, and Korean input support. Perfect for quickly bootstrapping a minimal Alpine system into a usable desktop with one command.
+It includes theming, fonts, developer tools, and CJK input support via ibus. Perfect for quickly bootstrapping a minimal Alpine system into a usable desktop with one command.
 
 ---
 
