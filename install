@@ -1,0 +1,4 @@
+#!/bin/sh
+mkdir mem
+tar -xf alpine-minirootfs*.tar.*
+./"$1"init root "$2"
