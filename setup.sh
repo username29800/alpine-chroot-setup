@@ -5,15 +5,16 @@ echo 'nameserver 9.9.9.9' > /etc/resolv.conf
 echo 'nameserver 149.112.112.112' >> /etc/resolv.conf
 chmod 1777 /dev/shm
 apk update
-echo cmake make gcc g++ llvm20 clang20 7zip unzip curl zsh git python3 perl gawk m4 autoconf xz sudo vim xterm gcompat dbus dbus-x11 ibus ibus-hangul firefox font-noto-cjk font-noto-emoji sof-firmware alsa-ucm-conf xrandr tigervnc pulseaudio pavucontrol-qt bash | tr ' ' \\n > list
+echo "$1"cmake "$1"make "$1"gcc "$1"g++ "$1"llvm20 "$1"clang20 "$1"gettext 7zip unzip curl zsh git python3 perl "$1"gawk "$1"m4 "$1"autoconf xz sudo vim xterm gcompat dbus dbus-x11 ibus ibus-hangul firefox font-noto-cjk font-noto-emoji sof-firmware alsa-ucm-conf xrandr tigervnc pulseaudio pavucontrol-qt "$1"bash | tr ' ' \\n > list
 apk search mate | grep \^mate | cut -d. -f-1 | sed 's,-\d*\?$,,' >> list
 apk search eudev | grep \^eudev | cut -d. -f-1 | sed 's,-\d*\?$,,' >> list
 apk search libcanberra | grep \^lib | cut -d. -f-1 | sed 's,-\d*\?$,,' >> list
-sed -i '1,$s,^,apk add ,' list
+sed -i 's,^,apk add ,' list
 sed -i "1i#\!/bin/sh" list
-sed -i '1,$s,^.*-lang$,,' list
-sed -i '1,$s,^.*-doc$,,' list
-sed -i '1,$s,^.*-dev$,,' list
+sed -i 's,^.*-lang$,,' list
+sed -i 's,^.*-doc$,,' list
+sed -i 's,^.*-dev$,,' list
+sed -i 's,^apk add #.*\?$,,' list
 chmod 500 list
 ./list
 echo 'add user: username must be user'
