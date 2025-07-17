@@ -1,0 +1,12 @@
+#!/bin/sh
+dest="$1"
+delim="$2"
+depth="$3"
+find $dest -type l | sed 's,^,ls -l ,' | sed 's,$, | cut -d: -f2- | cut -d" " -f2- | grep .l2s..apk.,' > linker
+sh linker > links
+cat links | while read line
+do
+    link="$(echo $line | cut -d' ' -f1 | cut -d/ -f$depth-)"
+    src="$(echo $line | cut -d' ' -f3 | sed 's,^.*'$delim',,' | cut -d/ -f$depth-)"
+    ln -sf "$src" "$link"
+done
