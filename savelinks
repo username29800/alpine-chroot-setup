@@ -1,4 +1,7 @@
 #!/bin/sh
+#usage: path/to/savelinks $(pwd) previous/chroot/directory/name/ depth
+#NOTE: '/' after the prev root name is required.
+#depth is used to get rid of remaining upper dir names, such as 'bin' or 'usr'. set it to 2 when pwd is right under /. Adjust the value between 2 and 4 if the script is not working properly.
 dest="$1"
 delim="$2"
 depth="$3"
