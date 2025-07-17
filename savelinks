@@ -2,7 +2,7 @@
 dest="$1"
 delim="$2"
 depth="$3"
-find $dest -type l | sed 's,^,ls -l ,' | sed 's,$, | cut -d: -f2- | cut -d" " -f2- | grep .l2s..apk.,' > linker
+find $dest -type l | sed 's,^,ls -l ,' | sed 's,$, | cut -d: -f2- | cut -d" " -f2- | grep .l2s.,' > linker
 sh linker > links
 cat links | while read line
 do
