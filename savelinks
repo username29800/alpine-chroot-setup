@@ -3,13 +3,12 @@
 #NOTE: '/' after the target directory name is strictly required, not to irreversibly break all the l2symlink directions.
 #depth is used to get rid of remaining upper dir names, such as 'bin' or 'usr'. set it to 2 when pwd is right under /. Adjust the value between 2 and 4 if the script is not working properly.
 dest="$(pwd)"
-delim="$2"
-depth=1
+delim="$1"
 find $dest -type l | sed 's,^,ls -l ,' | sed 's,$, | cut -d: -f2- | cut -d" " -f2- | grep .l2s.,' > linker
 sh linker > links
 cat links | while read line
 do
-    link="$(echo $line | cut -d' ' -f1 | cut -d/ -f$depth-)"
-    src="$(echo $line | cut -d' ' -f3 | sed 's,^.*'$delim',,' | cut -d/ -f$depth-)"
+    link="$(echo $line | cut -d' ' -f1 | sed 's,^.*'$delim',,')"
+    src="$(echo $line | cut -d' ' -f3 | sed 's,^.*'$delim',,')"
     ln -sf "$src" "$link"
 done
