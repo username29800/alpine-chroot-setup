@@ -1,10 +1,10 @@
 #!/bin/sh
-#usage: path/to/savelinks $(pwd) previous/chroot/directory/name/ depth
-#NOTE: '/' after the prev root name is required.
+#usage: path/to/savelinks [chroot directory]/relative/path/to/pwd/
+#NOTE: '/' after the target directory name is strictly required, not to irreversibly break all the l2symlink directions.
 #depth is used to get rid of remaining upper dir names, such as 'bin' or 'usr'. set it to 2 when pwd is right under /. Adjust the value between 2 and 4 if the script is not working properly.
-dest="$1"
+dest="$(pwd)"
 delim="$2"
-depth="$3"
+depth=1
 find $dest -type l | sed 's,^,ls -l ,' | sed 's,$, | cut -d: -f2- | cut -d" " -f2- | grep .l2s.,' > linker
 sh linker > links
 cat links | while read line
