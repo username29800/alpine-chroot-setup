@@ -1,5 +1,5 @@
 #!/bin/sh
-#usage: path/to/savelinks [chroot directory]/relative/path/to/pwd/
+#usage: path/to/savelinks
 #NOTE: '/' after the target directory name is strictly required, not to irreversibly break all the l2symlink directions.
 #depth is used to get rid of remaining upper dir names, such as 'bin' or 'usr'. set it to 2 when pwd is right under /. Adjust the value between 2 and 4 if the script is not working properly.
 dest="$(pwd)"
@@ -8,7 +8,7 @@ find $dest -type l | sed 's,^,ls -l ,' | sed 's,$, | cut -d: -f2- | cut -d" " -f
 sh linker > links
 cat links | while read line
 do
-    link="$(echo $line | cut -d' ' -f1 | sed 's,^'$dest',,')"
-    src="$(echo $line | cut -d' ' -f3 | sed 's,^'$dest',,')"
+    link="$(echo $line | cut -d' ' -f1 | sed 's,^'$dest'/,,')"
+    src="$(echo $line | cut -d' ' -f3 | sed 's,^'$dest'/,,')"
     ln -sf "$src" "$link"
 done
