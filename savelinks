@@ -1,5 +1,6 @@
 #!/bin/sh
-#usage: path/to/savelinks
+#usage: path/to/savelinks [chroot dir]/path/to/target/dir
+#the script should be executed within the target dir; pwd should be the target dir.
 #NOTE: '/' after the target directory name is strictly required, not to irreversibly break all the l2symlink directions.
 #depth is used to get rid of remaining upper dir names, such as 'bin' or 'usr'. set it to 2 when pwd is right under /. Adjust the value between 2 and 4 if the script is not working properly.
 dest="$(pwd)"
