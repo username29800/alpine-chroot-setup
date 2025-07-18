@@ -9,6 +9,7 @@ echo "$1"cmake "$1"make "$1"gcc "$1"g++ "$1"llvm20 "$1"clang20 "$1"gettext 7zip 
 apk search mate | grep \^mate | cut -d. -f-1 | sed 's,-\d*\?$,,' >> list
 apk search eudev | grep \^eudev | cut -d. -f-1 | sed 's,-\d*\?$,,' >> list
 apk search libcanberra | grep \^lib | cut -d. -f-1 | sed 's,-\d*\?$,,' >> list
+apk search xf86-video | grep \^xf86 | cut -d. -f-1 | sed 's,-\d*\?$,,' | sed 's,^,'"$1"',' >> list
 sed -i 's,^,apk add ,' list
 sed -i "1i#\!/bin/sh" list
 sed -i 's,^.*-lang$,,' list
