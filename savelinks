@@ -8,7 +8,7 @@ find $dest -type l | sed 's,^,ls -l ,' | sed 's,$, | cut -d: -f2- | cut -d" " -f
 sh linker > links
 cat links | while read line
 do
-    link="$(echo $line | cut -d' ' -f1 | sed 's,^.*'$delim',,')"
-    src="$(echo $line | cut -d' ' -f3 | sed 's,^.*'$delim',,')"
+    link="$(echo $line | cut -d' ' -f1 | sed 's,^'$dest',,')"
+    src="$(echo $line | cut -d' ' -f3 | sed 's,^'$dest',,')"
     ln -sf "$src" "$link"
 done
