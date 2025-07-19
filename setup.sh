@@ -22,9 +22,12 @@ sed -i 's,^apk add #.*\?$,,' list
 chmod 500 list
 ./list
 echo 'add user: username must be user'
-adduser user
+echo "adduse.r/psw.d/
+adduse.r/psw.d/" | adduser user
 echo vncpasswd - enter a new vnc password
-su -c vncpasswd user
+echo "adusr.wd
+adusr.wd
+n" | su -c vncpasswd user
 sed -i "$(cat /etc/sudoers | grep -n '^root ALL' | head -n1 | cut -d: -f-1)"a"user ALL=(ALL:ALL) ALL" /etc/sudoers
 cd /home/user
 mkdir Downloads Documents Pictures Music Videos Projects
@@ -82,8 +85,12 @@ unzip d2codingfont/D2Coding-Ver1.3.2*.zip
 cp D2Coding/*.ttf /home/user/.fonts
 fc-cache
 echo 'set nocp number autoindent tabstop=2 shiftwidth=2 expandtab printheader=""' > /home/user/.vimrc
+echo 'default password: adduse.r/psw.d/' > /home/user/passinfo
+echo 'default vnc password: adusr.wd' >> /home/user/passinfo
+echo 'CHANGE default password for security' >> /home/user/passinfo
 chown -R user /home/user
 chmod -R 755 /build/ohmyzsh
+sed -i 's,^.*zsh -l$,#&,' /build/ohmyzsh/tools/install.sh
 su -c "sh /build/ohmyzsh/tools/install.sh" user
 sed -ir "$(cat /home/user/.zshrc | grep -n ^ZSH_THEME | head -n1 | cut -d: -f-1)"'s,=.*\?$,="agnoster",' /home/user/.zshrc
 chown -R user /home/user
