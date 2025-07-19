@@ -23,7 +23,7 @@ chmod 500 list
 ./list
 echo 'add user: username must be user'
 adduser user
-echo vncpasswd
+echo vncpasswd - enter a new vnc password
 su -c vncpasswd user
 sed -i "$(cat /etc/sudoers | grep -n '^root ALL' | head -n1 | cut -d: -f-1)"a"user ALL=(ALL:ALL) ALL" /etc/sudoers
 cd /home/user
