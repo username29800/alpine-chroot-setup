@@ -11,6 +11,8 @@ apk search eudev | grep \^eudev | cut -d. -f-1 | sed 's,-\d*\?$,,' >> list
 apk search libcanberra | grep \^lib | cut -d. -f-1 | sed 's,-\d*\?$,,' >> list
 apk search xf86-video | grep \^xf86 | cut -d. -f-1 | sed 's,-\d*\?$,,' | sed 's,^,'"$1"',' >> list
 apk search zsh | grep \^zsh | cut -d. -f-1 | sed 's,-\d*\?$,,' | sed 's,^,'"$1"',' >> list
+sed -i '2s,^.*$,&\n&,' /etc/apk/repositories
+sed -i '3s,community,testing,' /etc/apk/repositories
 sed -i 's,^,apk add ,' list
 sed -i "1i#\!/bin/sh" list
 sed -i 's,^.*-lang$,,' list
