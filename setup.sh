@@ -49,7 +49,7 @@ mkdir /usr/share/xsessions
 echo "#\!/bin/sh" > /home/user/mate-config
 echo "vncserver :100 /dev/null 2>&1 &" >> /home/user/mate-config
 echo "export DISPLAY=:100" >> /home/user/mate-config
-echo "gsettings set org.mate.interface font-name 'Noto Sans CJK KR 11'" > /home/user/mate-config
+echo "gsettings set org.mate.interface font-name 'Noto Sans CJK KR 11'" >> /home/user/mate-config
 echo "gsettings set org.mate.interface document-font-name 'Noto Sans CJK KR 11'" >> /home/user/mate-config
 echo "gsettings set org.mate.interface monospace-font-name 'D2Coding 12'" >> /home/user/mate-config
 echo "gsettings set org.mate.terminal.profile:/org/mate/terminal/profile/ font 'D2Coding 12'" >> /home/user/mate-config
