@@ -52,7 +52,7 @@ echo "export DISPLAY=:100" >> /home/user/mate-config
 echo "gsettings set org.mate.interface font-name 'Noto Sans CJK KR 11'" >> /home/user/mate-config
 echo "gsettings set org.mate.interface document-font-name 'Noto Sans CJK KR 11'" >> /home/user/mate-config
 echo "gsettings set org.mate.interface monospace-font-name 'D2Coding 12'" >> /home/user/mate-config
-echo dconf write "/org/mate/terminal/profiles/default/font \"'d2coding 12'\"" >> /home/user/mate-config
+echo dconf write "/org/mate/terminal/profiles/default/font \"'D2Coding 12'\"" >> /home/user/mate-config
 echo dconf write "/org/mate/terminal/profiles/default/use-system-font \"false\"" >> /home/user/mate-config
 echo dconf write "/org/mate/terminal/profiles/default/use-theme-colors \"false\"" >> /home/user/mate-config
 echo dconf write "/org/mate/terminal/profiles/default/foreground-color \"'#FFFFFFFFFFFF'\"" >> /home/user/mate-config
