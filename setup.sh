@@ -59,8 +59,7 @@ echo dconf write "/org/mate/terminal/profiles/default/foreground-color \"'#FFFFF
 echo dconf write "/org/mate/terminal/profiles/default/background-color \"'#000000000000'\"" >> /home/user/mate-config
 echo dconf write "/org/mate/terminal/profiles/default/background-type \"'transparent'\"" >> /home/user/mate-config
 echo dconf write "/org/mate/terminal/profiles/default/background-darkness \"0.66\"" >> /home/user/mate-config
-echo dconf write "/org/mate/terminal/profiles/default/palette \"'#2E2E34343636:#CCCC00000000:#4E4E9A9A0606:#C4C4A0A00000:#34346565A4A4:#757550507B7B:#060698209A9A:#D3D3D7D7CfCf:#555557575353:#EFEF29292929:#8A8AE2E23434:#FCFCE9E94F4F:#72729F9FCFCF:#ADAD7F7FA8A8:#3434E2E2E2E2:#EEEEEEEEECEC'\"" >> /home/user/mate-config
-echo "gsettings set org.mate.terminal.profile:/org/mate/terminal/profile/ palette '#2E2E34343636:#CCCC00000000:#4E4E9A9A0606:#C4C4A0A00000:#34346565A4A4:#757550507B7B:#060698209A9A:#D3D3D7D7CFCF:#555557575353:#EFEF29292929:#8A8AE2E23434:#FCFCE9E94F4F:#72729F9FCFCF:#ADAD7F7FA8A8:#3434E2E2E2E2:#EEEEEEEEECEC'" >> /home/user/mate-config
+echo dconf write "/org/mate/terminal/profiles/default/palette \"'#000000000000:#CCCC00000000:#4E4D9A9A0605:#C4C3A0A00000:#34346564A4A3:#7575504F7B7B:#060598979A9A:#D3D3D7D6CFCF:#555457565352:#EFEF29282928:#8A89E2E23434:#FCFBE9E84F4F:#72729F9ECFCF:#ADAC7F7EA8A8:#3434E2E2E2E2:#EEEDEEEDECEB'\"" >> /home/user/mate-config
 echo "gsettings set org.mate.Marco.general theme 'Menta'" >> /home/user/mate-config
 echo "gsettings set org.mate.Marco.general titlebar-uses-system-font 'false'" >> /home/user/mate-config
 echo "gsettings set org.mate.Marco.general titlebar-font 'Noto Sans CJK KR 11'" >> /home/user/mate-config
