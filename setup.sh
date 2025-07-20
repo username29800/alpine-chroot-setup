@@ -65,7 +65,7 @@ echo "gsettings set org.mate.Marco.general titlebar-uses-system-font 'false'" >>
 echo "gsettings set org.mate.Marco.general titlebar-font 'Noto Sans CJK KR 11'" >> /home/user/mate-config
 echo "kill %1" >> /home/user/mate-config
 chmod 755 /home/user/mate-config
-su -lc '/home/user/mate-config' user
+su -lc 'dbus-launch /home/user/mate-config' user
 echo '[Desktop Entry]' > /usr/share/xsessions/custom.desktop
 echo 'Name=Custom' >> /usr/share/xsessions/custom.desktop
 echo 'Exec=/home/user/xstartup' >> /usr/share/xsessions/custom.desktop
