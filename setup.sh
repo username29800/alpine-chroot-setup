@@ -46,8 +46,8 @@ echo 'firefox $1' >> /bin/safefox
 chmod 755 /bin/safefox
 chmod 744 .config/tigervnc/xstartup
 mkdir /usr/share/xsessions
-su -c "vncserver :100 > /dev/null 2>&1 &" user
-su -c "export DISPLAY=:100
+su -c "vncserver :100 > /dev/null 2>&1 &
+export DISPLAY=:100
 gsettings set org.mate.interface font-name 'Noto Sans CJK KR 11'
 gsettings set org.mate.interface document-font-name 'Noto Sans CJK KR 11'
 gsettings set org.mate.interface monospace-font-name 'D2Coding 12'
