@@ -52,14 +52,14 @@ echo "export DISPLAY=:100" >> /home/user/mate-config
 echo "gsettings set org.mate.interface font-name 'Noto Sans CJK KR 11'" >> /home/user/mate-config
 echo "gsettings set org.mate.interface document-font-name 'Noto Sans CJK KR 11'" >> /home/user/mate-config
 echo "gsettings set org.mate.interface monospace-font-name 'D2Coding 12'" >> /home/user/mate-config
-echo dconf write /org/mate/terminal/profiles/default/font "'d2coding 12'" >> /home/user/mate-config
-echo dconf write /org/mate/terminal/profiles/default/use-system-font "false" >> /home/user/mate-config
-echo dconf write /org/mate/terminal/profiles/default/use-theme-colors "false" >> /home/user/mate-config
-echo dconf write /org/mate/terminal/profiles/default/foreground-color "'#FFFFFFFFFFFF'" >> /home/user/mate-config
-echo dconf write /org/mate/terminal/profiles/default/background-color "'#000000000000'" >> /home/user/mate-config
-echo dconf write /org/mate/terminal/profiles/default/background-type "'transparent'" >> /home/user/mate-config
-echo dconf write /org/mate/terminal/profiles/default/background-darkness "0.66" >> /home/user/mate-config
-echo dconf write /org/mate/terminal/profiles/default/palette "'#2E2E34343636:#CCCC00000000:#4E4E9A9A0606:#C4C4A0A00000:#34346565A4A4:#757550507B7B:#060698209A9A:#D3D3D7D7CfCf:#555557575353:#EFEF29292929:#8A8AE2E23434:#FCFCE9E94F4F:#72729F9FCFCF:#ADAD7F7FA8A8:#3434E2E2E2E2:#EEEEEEEEECEC'" >> /home/user/mate-config
+echo dconf write "/org/mate/terminal/profiles/default/font \"'d2coding 12'\"" >> /home/user/mate-config
+echo dconf write "/org/mate/terminal/profiles/default/use-system-font \"false\"" >> /home/user/mate-config
+echo dconf write "/org/mate/terminal/profiles/default/use-theme-colors \"false\"" >> /home/user/mate-config
+echo dconf write "/org/mate/terminal/profiles/default/foreground-color \"'#FFFFFFFFFFFF'\"" >> /home/user/mate-config
+echo dconf write "/org/mate/terminal/profiles/default/background-color \"'#000000000000'\"" >> /home/user/mate-config
+echo dconf write "/org/mate/terminal/profiles/default/background-type \"'transparent'\"" >> /home/user/mate-config
+echo dconf write "/org/mate/terminal/profiles/default/background-darkness \"0.66\"" >> /home/user/mate-config
+echo dconf write "/org/mate/terminal/profiles/default/palette \"'#2E2E34343636:#CCCC00000000:#4E4E9A9A0606:#C4C4A0A00000:#34346565A4A4:#757550507B7B:#060698209A9A:#D3D3D7D7CfCf:#555557575353:#EFEF29292929:#8A8AE2E23434:#FCFCE9E94F4F:#72729F9FCFCF:#ADAD7F7FA8A8:#3434E2E2E2E2:#EEEEEEEEECEC'\"" >> /home/user/mate-config
 echo "gsettings set org.mate.terminal.profile:/org/mate/terminal/profile/ palette '#2E2E34343636:#CCCC00000000:#4E4E9A9A0606:#C4C4A0A00000:#34346565A4A4:#757550507B7B:#060698209A9A:#D3D3D7D7CFCF:#555557575353:#EFEF29292929:#8A8AE2E23434:#FCFCE9E94F4F:#72729F9FCFCF:#ADAD7F7FA8A8:#3434E2E2E2E2:#EEEEEEEEECEC'" >> /home/user/mate-config
 echo "gsettings set org.mate.Marco.general theme 'Menta'" >> /home/user/mate-config
 echo "gsettings set org.mate.Marco.general titlebar-uses-system-font 'false'" >> /home/user/mate-config
