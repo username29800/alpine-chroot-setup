@@ -46,24 +46,26 @@ echo 'firefox $1' >> /bin/safefox
 chmod 755 /bin/safefox
 chmod 744 .config/tigervnc/xstartup
 mkdir /usr/share/xsessions
-su -c "vncserver :100 > /dev/null 2>&1 &
-export DISPLAY=:100
-gsettings set org.mate.interface font-name 'Noto Sans CJK KR 11'
-gsettings set org.mate.interface document-font-name 'Noto Sans CJK KR 11'
-gsettings set org.mate.interface monospace-font-name 'D2Coding 12'
-gsettings set org.mate.terminal.profile:/org/mate/terminal/profile/ font 'D2Coding 12'
-gsettings set org.mate.terminal.profile:/org/mate/terminal/profile/ use-system-font 'false'
-gsettings set org.mate.terminal.profile:/org/mate/terminal/profile/ use-theme-colors 'false'
-gsettings set org.mate.terminal.profile:/org/mate/terminal/profile/ background-type 'transparent'
-gsettings set org.mate.terminal.profile:/org/mate/terminal/profile/ background-darkness '0.66'
-gsettings set org.mate.terminal.profile:/org/mate/terminal/profile/ background-color '#000000000000'
-gsettings set org.mate.terminal.profile:/org/mate/terminal/profile/ foreground-color '#FFFFFFFFFFFF'
-gsettings set org.mate.terminal.profile:/org/mate/terminal/profile/ palette '#2E2E34343636:#CCCC00000000:#4E4E9A9A0606:#C4C4A0A00000:#34346565A4A4:#757550507B7B:#060698209A9A:#D3D3D7D7CFCF:#555557575353:#EFEF29292929:#8A8AE2E23434:#FCFCE9E94F4F:#72729F9FCFCF:#ADAD7F7FA8A8:#3434E2E2E2E2:#EEEEEEEEECEC'
-gsettings set org.mate.Marco.general theme 'Menta'
-gsettings set org.mate.Marco.general titlebar-uses-system-font 'false'
-gsettings set org.mate.Marco.general titlebar-font 'Noto Sans CJK KR 11'
-kill %1
-" user
+echo "#\!/bin/sh" > /home/user/mate-config
+echo "vncserver :100 /dev/null 2>&1 &" >> /home/user/mate-config
+echo "export DISPLAY=:100" >> /home/user/mate-config
+echo "gsettings set org.mate.interface font-name 'Noto Sans CJK KR 11'" > /home/user/mate-config
+echo "gsettings set org.mate.interface document-font-name 'Noto Sans CJK KR 11'" >> /home/user/mate-config
+echo "gsettings set org.mate.interface monospace-font-name 'D2Coding 12'" >> /home/user/mate-config
+echo "gsettings set org.mate.terminal.profile:/org/mate/terminal/profile/ font 'D2Coding 12'" >> /home/user/mate-config
+echo "gsettings set org.mate.terminal.profile:/org/mate/terminal/profile/ use-system-font 'false'" >> /home/user/mate-config
+echo "gsettings set org.mate.terminal.profile:/org/mate/terminal/profile/ use-theme-colors 'false'" >> /home/user/mate-config
+echo "gsettings set org.mate.terminal.profile:/org/mate/terminal/profile/ background-type 'transparent'" >> /home/user/mate-config
+echo "gsettings set org.mate.terminal.profile:/org/mate/terminal/profile/ background-darkness '0.66'" >> /home/user/mate-config
+echo "gsettings set org.mate.terminal.profile:/org/mate/terminal/profile/ background-color '#000000000000'" >> /home/user/mate-config
+echo "gsettings set org.mate.terminal.profile:/org/mate/terminal/profile/ foreground-color '#FFFFFFFFFFFF'" >> /home/user/mate-config
+echo "gsettings set org.mate.terminal.profile:/org/mate/terminal/profile/ palette '#2E2E34343636:#CCCC00000000:#4E4E9A9A0606:#C4C4A0A00000:#34346565A4A4:#757550507B7B:#060698209A9A:#D3D3D7D7CFCF:#555557575353:#EFEF29292929:#8A8AE2E23434:#FCFCE9E94F4F:#72729F9FCFCF:#ADAD7F7FA8A8:#3434E2E2E2E2:#EEEEEEEEECEC'" >> /home/user/mate-config
+echo "gsettings set org.mate.Marco.general theme 'Menta'" >> /home/user/mate-config
+echo "gsettings set org.mate.Marco.general titlebar-uses-system-font 'false'" >> /home/user/mate-config
+echo "gsettings set org.mate.Marco.general titlebar-font 'Noto Sans CJK KR 11'" >> /home/user/mate-config
+echo "kill %1" >> /home/user/mate-config
+chmod 755 /home/user/mate-config
+su -lc '/home/user/mate-config' user
 echo '[Desktop Entry]' > /usr/share/xsessions/custom.desktop
 echo 'Name=Custom' >> /usr/share/xsessions/custom.desktop
 echo 'Exec=/home/user/xstartup' >> /usr/share/xsessions/custom.desktop
