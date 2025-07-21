@@ -11,5 +11,5 @@ cat links | while read line
 do
     link="$(echo $line | cut -d' ' -f1 | sed 's,^.*'$delim',,')"
     src="$(echo $line | cut -d' ' -f3 | sed 's,^.*'$delim',,')"
-    ln -sf "$src" "$link"
+    ln -sfn "$src" "$link"
 done
