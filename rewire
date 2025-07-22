@@ -1,5 +1,5 @@
 #!/bin/sh
-#usage: path/to/savelinks [chroot root dir 'name', NOT relative path]
+#usage: path/to/rewire [chroot root dir 'name', NOT relative path]
 #the script should be executed within the target dir; pwd should be the target dir.
 #NOTE: '/' after the target directory name is strictly required, not to irreversibly break all the l2symlink directions.
 dest="$(pwd)"
