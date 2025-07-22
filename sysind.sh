@@ -11,11 +11,11 @@ sed -i "$(cat /etc/sudoers | grep -n '^root ALL' | head -n1 | cut -d: -f-1)"a"us
 cd /home/user
 mkdir Downloads Documents Pictures Music Videos Projects
 mkdir -p .config/tigervnc
-echo 'export GTK_IM_MODULE=ibus' > .zshrc
-echo 'export QT_IM_MODULE=ibus' >> .zshrc
-echo 'export XMODIFIERS=@im=ibus' >> .zshrc
-echo 'export PULSE_SERVER=localhost' >> .zshrc
-cp .bashrc .config/tigervnc/xstartup
+echo 'export GTK_IM_MODULE=ibus' > .zshrc.1
+echo 'export QT_IM_MODULE=ibus' >> .zshrc.1
+echo 'export XMODIFIERS=@im=ibus' >> .zshrc.1
+echo 'export PULSE_SERVER=localhost' >> .zshrc.1
+cp .zshrc.1 .config/tigervnc/xstartup
 echo 'xrandr --output VNC-0 --mode 1920x1080' >> .config/tigervnc/xstartup
 echo 'mate-session' >> .config/tigervnc/xstartup
 ln -sf .config/tigervnc/xstartup
@@ -92,6 +92,7 @@ chown -R user /home/user
 chmod -R 755 /build/ohmyzsh
 sed -i 's,^.*zsh -l$,#&,' /build/ohmyzsh/tools/install.sh
 su -c "sh /build/ohmyzsh/tools/install.sh" user
+cat /home/user/.zshrc.1 >> /home/user/.zshrc
 sed -ir "$(cat /home/user/.zshrc | grep -n ^ZSH_THEME | head -n1 | cut -d: -f-1)"'s,=.*\?$,="agnoster",' /home/user/.zshrc
 chown -R user /home/user
 exit
