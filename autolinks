@@ -1,4 +1,6 @@
 #!/bin/sh
+#usage: [path/to/autolinks] delimiter(chroot root dir) [absolute/path/to/savelinks]
+#it is recommended to provide savelinks location in the format of $(pwd)/[relative/path/to/savelinks]
 dest="$(pwd)"
 delim="$1"
 path="$2"
