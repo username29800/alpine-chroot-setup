@@ -7,7 +7,7 @@ echo vncpasswd - enter a new vnc password
 echo "adusr.wd
 adusr.wd
 n" | su -c vncpasswd user
-sed -i "$(cat /etc/sudoers | grep -n '^root ALL' | head -n1 | cut -d: -f-1)"a"user ALL=(ALL:ALL) ALL" /etc/sudoers
+sed -i "$(cat /etc/sudoers | grep -n 'root\s\{1,\}ALL' | head -n1 | cut -d: -f-1)"a"user ALL=(ALL:ALL) ALL" /etc/sudoers
 cd /home/user
 mkdir Downloads Documents Pictures Music Videos Projects
 mkdir -p .config/tigervnc
