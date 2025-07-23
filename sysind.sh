@@ -1,5 +1,5 @@
 #!/bin/sh
-#prerequisites: unzip, coreutils or busybox firefox, openbox, xterm, tigervnc, sudo, vim, git, zsh, user 'user' with home directory
+#prerequisites: unzip, coreutils or busybox firefox, openbox, xterm, tigervnc, pulseaudio, sudo, vim, git, zsh, user 'user' with home directory
 mkdir /build
 cd /build
 chmod 1777 /dev/shm
