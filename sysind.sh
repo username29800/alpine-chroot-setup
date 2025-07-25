@@ -1,5 +1,5 @@
 #!/bin/sh
-#prerequisites: unzip, coreutils or busybox firefox, openbox, xterm, tigervnc, pulseaudio, sudo, vim, git, zsh, user 'user' with home directory
+#prerequisites: unzip, coreutils or busybox, firefox, openbox, rofi, qterminal, xterm, tigervnc, pulseaudio, sudo, vim, git, zsh, user 'user' with home directory
 mkdir /build
 cd /build
 chmod 1777 /dev/shm
@@ -23,6 +23,12 @@ echo '#!/bin/sh' > /bin/safefox
 echo 'export MOZ_FAKE_NO_SANDBOX=1' >> /bin/safefox
 echo 'firefox $1' >> /bin/safefox
 chmod 755 /bin/safefox
+echo '#!/bin/sh' > /bin/showw
+echo 'rofi -show window &' >> /bin/showw
+chmod 755 /bin/showw
+echo '#!/bin/sh' > /bin/sdclock
+echo 'xclock -digital -update 10 &' >> /bin/sdclock
+chmod 755 /bin/sdclock
 chmod 744 .config/tigervnc/xstartup
 mkdir .vnc
 cp xstartup .vnc/xstartup
