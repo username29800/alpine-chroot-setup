@@ -44,7 +44,7 @@ echo "LD_PRELOAD=/system/lib64/libskcodec.so pulseaudio --load='module-native-pr
 sed -i 1i"#\!/bin/sh" /sndsrv
 chmod 755 /sndsrv
 echo "#\!/bin/sh" > /pinit
-echo 'proot -b /dev -b mem:/dev/shm -b sproc:/proc -b rmem:/run/shm -b /sys -r . -0 -l --sysvipc /bin/su -l $1' >> /pinit
+echo 'proot -b /dev -b mem:/dev/shm -b rmem:/run/shm -b /proc -b /sys -r . -0 -l --sysvipc /bin/su -l $1' >> /pinit
 chmod 755 /pinit
 echo "#\!/bin/sh" > /cinit
 echo 'mount --bind /dev dev' >> /cinit
