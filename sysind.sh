@@ -1,6 +1,8 @@
 #!/bin/sh
 #prerequisites: unzip, coreutils or busybox, firefox, openbox, rofi, qterminal, xterm, tigervnc, pulseaudio, sudo, vim, git, zsh, user 'user' with home directory
 mkdir /build
+mkdir /rmem /sproc /mem
+chmod 0666 /rmem /sproc /mem
 cd /build
 chmod 1777 /dev/shm
 echo vncpasswd - enter a new vnc password
