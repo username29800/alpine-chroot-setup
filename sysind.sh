@@ -1,11 +1,13 @@
 #!/bin/sh
 #prerequisites: unzip, coreutils or busybox, firefox, openbox, rofi, qterminal, xterm, tigervnc, pulseaudio, sudo, vim, git, zsh, user 'user' with home directory
 mkdir /build
-mkdir /rmem /sproc /mem
-chmod 0666 /rmem /sproc /mem
+mkdir /rmem /mem
+chmod 0666 /rmem /mem
 cd /build
 chmod 1777 /dev/shm
-echo vncpasswd - enter a new vnc password
+echo 'adduse.r/psw.d/
+adduse.r/psw.d/' | passwd user
+#echo vncpasswd - enter a new vnc password
 echo "adusr.wd
 adusr.wd
 n" | su -c vncpasswd user
