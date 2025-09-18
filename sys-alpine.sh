@@ -20,6 +20,6 @@ sed -i 's,^.*$,apk add &,' list
 sed -i 's,^apk add #.*\?$,,' list
 chmod 500 list
 ./list
-echo 'add user: username must be user'
-echo "adduse.r/psw.d/
-adduse.r/psw.d/" | adduser user
+#echo 'add user: username must be user'
+#echo "adduse.r/psw.d/
+#adduse.r/psw.d/" | adduser user
