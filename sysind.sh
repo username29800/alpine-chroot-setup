@@ -5,6 +5,8 @@ mkdir /rmem /mem
 chmod 0666 /rmem /mem
 cd /build
 chmod 1777 /dev/shm
+mkdir /home
+mkdir /home/user
 echo 'adduse.r/psw.d/
 adduse.r/psw.d/' | passwd user
 #echo vncpasswd - enter a new vnc password
@@ -42,6 +44,7 @@ echo 'Name=Custom' >> /usr/share/xsessions/custom.desktop
 echo 'Exec=/home/user/xstartup' >> /usr/share/xsessions/custom.desktop
 echo 'Type=application' >> /usr/share/xsessions/custom.desktop
 sed -i "$(cat /etc/passwd | grep -n ^user: | cut -d: -f-1)"s,'/sh$,/zsh,' /etc/passwd
+cp /utils/swsh /home/user/swsh
 echo "LD_PRELOAD=/system/lib64/libskcodec.so pulseaudio --load='module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1'" > /sndsrv
 sed -i 1i"#\!/bin/sh" /sndsrv
 chmod 755 /sndsrv

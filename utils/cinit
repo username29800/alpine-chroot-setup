@@ -1,0 +1,8 @@
+#\!/bin/sh
+mount --bind /dev dev
+mount --bind /proc proc
+mount --bind /sys sys
+chroot . /bin/su -c "/initpty $1 $2" root
+umount dev
+umount proc
+umount sys
