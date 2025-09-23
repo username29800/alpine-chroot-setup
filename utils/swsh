@@ -1,2 +1,2 @@
 #!/bin/sh
-sed -i "$(cat /etc/passwd | grep -n ^user: | cut -d: -f-1)"s,'/sh$,/'$1, /etc/passwd
+sed -i "$(cat /etc/passwd | grep -n ^$1: | cut -d: -f-1)"s,'/'$2'$,/'$3, /etc/passwd
