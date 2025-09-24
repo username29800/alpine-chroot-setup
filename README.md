@@ -1,7 +1,8 @@
 # alpine-chroot-setup
 A setup and config automation for alpine linux minirootfs. With Bring-Your-Own-Rootfs method.
+note: This project is currently changing its objectives away from desktop, to multi-purpose container kit.
 
-# Alpine MATE Desktop Setup Script
+# Alpine MATE Desktop Setup Script (Deprecated)
 
 This is an automated shell script to set up a **full-featured Alpine Linux desktop** environment using the **MATE** desktop and **TigerVNC**, designed for lightweight remote or local use.
 
