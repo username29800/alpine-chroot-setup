@@ -35,6 +35,9 @@ chmod 755 /bin/showw
 echo '#!/bin/sh' > /bin/sdclock
 echo 'xclock -digital -update 10 &' >> /bin/sdclock
 chmod 755 /bin/sdclock
+cp /utils/tlch /bin/tlch
+cp /utils/tlch /bin/twrapper
+cp /utils/tlch /bin/tlaunch
 chmod 744 .config/tigervnc/xstartup
 mkdir .vnc
 cp xstartup .vnc/xstartup

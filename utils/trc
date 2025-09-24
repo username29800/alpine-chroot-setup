@@ -1,0 +1,15 @@
+UseBridges 0
+ClientTransportPlugin obfs4 exec /usr/bin/lyrebird
+
+#Default SOCKS5 Proxy
+SocksPort 9050 SessionGroup=1 IsolateClientProtocol IsolateClientAddr IsolateDestAddr PreferIPv6
+#Alternative Socks5 Proxy
+SocksPort 9051 SessionGroup=2 IsolateClientProtocol IsolateClientAddr IsolateDestAddr PreferIPv6
+#Port-isolated proxy, intended only for single host connection
+SocksPort 9052 SessionGroup=2 IsolateClientProtocol IsolateClientAddr IsolateDestPort PreferIPv6
+#All-in-one. Not recommended.
+SocksPort 9053 SessionGroup=2 IsolateClientProtocol IsolateClientAddr IsolateDestAddr IsolateDestPort PreferIPv6
+
+#for system-wide proxy
+DnsPort 9010 SessionGroup=3 IsolateClientProtocol IsolateClientAddr IsolateDestAddr PreferIPv6
+HTTPTunnelPort 9020 SessionGroup=3 IsolateClientProtocol IsolateClientAddr IsolateDestAddr PreferIPv6
