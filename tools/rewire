@@ -1,16 +1,5 @@
-#!/bin/sh
-#usage: path/to/rewire [chroot root dir 'name', NOT relative path]
-#the script should be executed within the target dir; pwd should be the target dir.
-#NOTE: '/' after the target directory name is strictly required, not to irreversibly break all the l2symlink directions.
-dest="$(pwd)"
-droot="$1"
-find $dest -type l | sed 's,^,ls -l ,' | sed 's,$, | cut -d: -f2- | cut -d" " -f2- | grep .l2s.,' > linker
-sh linker > links
-cat links | while read line
-do
-    link="$(echo $line | cut -d' ' -f1 | sed 's,^.*'$droot',,' | sed 's,^/,,')"
-    src="$(echo $line | cut -d' ' -f3 | sed 's,^/,,')"
-    echo "$(pwd)/$src"
-    echo "$link"
+#!/bin/sh                                                       #usage: path/to/rewire [previous chroot root dir 'name', NOT relative path]                                                     #the script should be executed within the target dir; pwd should be the target dir.                                             #NOTE: '/' after the target directory name is strictly required, not to irreversibly break all the l2symlink directions.        dest="$(pwd)"                                                   droot="$1"                                                      find $dest -type l | sed 's,^,ls -l ,' | sed 's,$, | cut -d: -f2- | cut -d" " -f2- | grep .l2s.,' > linker                      sh linker > links                                               cat links | while read line                                     do                                                                  link="$(echo $line | cut -d' ' -f1)"                            src="$(echo $line | cut -d' ' -f3 | sed 's,^.*'$droot',,' | sed 's,^/,,')"
     ln -sfn "$(pwd)/$src" "$link"
+    echo $src
+    echo $link                                                      echo .
 done
