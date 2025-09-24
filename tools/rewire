@@ -12,5 +12,5 @@ do
     src="$(echo $line | cut -d' ' -f3 | sed 's,^/,,')"
     echo "$(pwd)/$src"
     echo "$link"
-    #ln -sfn "$(pwd)/$src" "$link"
+    ln -sfn "$(pwd)/$src" "$link"
 done
