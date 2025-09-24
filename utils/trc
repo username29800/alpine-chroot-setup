@@ -10,6 +10,9 @@ SocksPort 9052 SessionGroup=2 IsolateClientProtocol IsolateClientAddr IsolateDes
 #All-in-one. Not recommended.
 SocksPort 9053 SessionGroup=2 IsolateClientProtocol IsolateClientAddr IsolateDestAddr IsolateDestPort PreferIPv6
 
+#self proxy for updates, etc.
+SocksPort 9021 SessionGroup=4 IsolateClientProtocol IsolateClientAddr IsolateDestAddr PreferIPv6
+
 #for system-wide proxy
 DnsPort 9010 SessionGroup=3 IsolateClientProtocol IsolateClientAddr IsolateDestAddr PreferIPv6
 HTTPTunnelPort 9020 SessionGroup=3 IsolateClientProtocol IsolateClientAddr IsolateDestAddr PreferIPv6
