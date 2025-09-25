@@ -8,6 +8,7 @@ apk update
 echo openssh openbox xfe qterminal rofi mousepad 7zip unzip curl zsh git python3 perl gawk xz sudo vim xterm gcompat dbus dbus-x11 ibus ibus-hangul firefox font-noto-cjk font-noto-emoji sof-firmware alsa-ucm-conf xrandr tigervnc pulseaudio pavucontrol-qt | tr ' ' \\n > list
 apk search eudev | grep \^eudev | sed 's,[-_]\d.*,,' >> list
 apk search xf86-video | grep \^xf86 | sed 's,[-_]\d.*,,' | sed 's,^,'"$1"',' >> list
+apk search libcanberra | grep \^lib | sed 's,[-_]\d.*,,' | sed 's,^,'"$1"',' >> list
 apk search zsh | grep \^zsh | sed 's,[-_]\d.*,,' | sed 's,^,'"$1"',' >> list
 sed -i '2s,^.*$,&\n&,' /etc/apk/repositories
 sed -i '3s,alpine/.*$,alpine/edge/testing,' /etc/apk/repositories
