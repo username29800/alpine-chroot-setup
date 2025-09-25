@@ -1,0 +1,2 @@
+#!/bin/sh
+cat .zshrc | sed -i 's,^export https\?_proxy=socks5h://localhost:.*$,,'
