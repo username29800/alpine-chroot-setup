@@ -26,8 +26,6 @@ make
 make install
 cd ..
 
-git clone https://github.com/syl20bnr/spacemacs
-
 edver='ed-1.22'
 wget https://ftp.gnu.org/gnu/ed/$edver.tar.lz
 lzip -d $edver.tar.lz
