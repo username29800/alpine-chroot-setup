@@ -1,2 +1,2 @@
 #!/bin/sh
-cat .zshrc | sed -i 's,^export https\?_proxy=socks5h://localhost:.*$,,'
+sed -i 's,^export https\?_proxy=socks5h://localhost:.*$,,' .$(cat /etc/passwd | grep ^user: | grep -o /.\*sh$ | sed s,^.\*bin/,,)rc
