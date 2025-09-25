@@ -1,116 +1,192 @@
-# alpine-chroot-setup
-A setup and config automation for alpine linux minirootfs. With Bring-Your-Own-Rootfs method.
-note: This project is currently changing its objectives away from desktop, to multi-purpose container kit.
+Alpine Chroot Setup Kit – Manual
 
-# Alpine MATE Desktop Setup Script (Deprecated)
+1. Introduction
 
-This is an automated shell script to set up a **full-featured Alpine Linux desktop** environment using the **MATE** desktop and **TigerVNC**, designed for lightweight remote or local use.
+What is this?
 
-It includes theming, fonts, developer tools, and CJK input support via ibus. Perfect for quickly bootstrapping a minimal Alpine system into a usable desktop with one command.
+The Alpine Chroot Setup Kit is a collection of shell scripts and utilities designed to simplify and automatize the process of setting up lightweight Linux containers using proot or chroot.
+Instead of requiring manual unpacking, configuration, and tuning of an Alpine Linux root filesystem, this setup kit provides ready-made installation and initialization scripts that streamline the entire process.
 
----
+Its design philosophy is system independence: the same scripts work across multiple environments, whether you are on Android (via Termux), inside an existing Linux terminal, or experimenting on bare-metal.
 
-## Features
+<Capabilities and Features>
 
-- Installs MATE desktop environment on Alpine Linux  
-- TigerVNC server configuration with user xstartup script  
-- Dark theme + Faenza/MATE icons compatible  
-- IBus + ibus-hangul (Korean input method)  
-- Noto fonts (CJK + Emoji)  
-- D2Coding font (for developers)  
-- Oh-My-Zsh with agnoster theme  
-- Firefox with VNC-safe launch wrapper  
-- Pulseaudio server for remote audio  
-- Development toolchain (gcc, clang, make, cmake, python, perl, etc.)  
-- Automatic configuration for environment variables, sudoers, VNC  
+Automated installation: prepare an Alpine Linux rootfs with minimal user interaction. You can build, copy, and produce your chroot/proot container as many as you want.
 
----
+Unified environment setup: Configure users, passwords, fonts, shells, and startup scripts automatically with sysind.sh.
 
-## Usage
+Init wrappers: Start a container with root (./pinit) or with a user account (./pinit user).
 
-**NOTE:** This is intended for running in both proot and chroot environment.
+Utility collection: Tools for proxy configuration (shocks), changing login shell (swsh), symlink repair (rewire), and more.
 
-1. Make sure your Alpine base is installed (e.g. from `alpine-minirootfs`). This can be downloaded from alpine linux official homepage.  
-2. Place this script (e.g. `setup.sh`) in your Alpine root filesystem.
-3. Make it executable by 'chmod +x setup.sh' or (if you've done chroot) just run it using 'sh setup.sh'.
-4. Chroot(or proot) into the new root.
-5. Run as root: ./setup.sh
+Extensible architecture: Support for additional scripts (pkg-*.sh for base package sets, ext-*.sh for extended environments).
 
----
+Multi-purpose use cases: Build anything from a minimal Alpine rootfs to a development workstation with editors and compilers.
 
-## After Install
 
-= User user is created.
+<What can I do with this?>
 
-- Password needs to be set manually when prompted. (the script prompts for VNC password too, which can be different from user's password)
+The kit enables a wide variety of scenarios, such as:
 
-- To launch VNC server:
+Linux-on-Android: Run a (virtually) full Alpine Linux environment inside Termux without root. Workarounds are provided to deal with android limitations.
 
-```bash
-vncserver :[port]
-(usually :1, :2, or :5901, :5902, etc.)
-```
+Bare-metal chroot: Repurpose the scripts on desktop or server systems to bootstrap experimental environments.
 
-- Connect with VNC viewer to see the desktop.
+Container playground: Use proot containers as crude, lightweight sandboxes for testing software.
 
-- To login as 'user' to start using the desktop experience, press Ctrl-d to exit, then
-```bash
-$ ./pinit [user]
-for proot
+Remote desktop: Install VNC and configure X11 forwarding for graphical sessions.
 
-\# ./cinit [user]
-for chroot (with root previleges)
+Hobbyist exploration: Try creative scripting, or building nested containers just for fun. 
+NOTE: Do NOT try dangerous scripts or malware, which can break into the host system.
 
-$ ./sndsrv
-make sure to run this before chroot/prrot for better sound experiences
-```
+
+<Limitations>
+
+Only Alpine Linux is supported (other distributions might be added after a long time.)
+
+While proot provides flexibility, performance may not match native chroot or Docker setups. Furthermore, Dockerfile is currently deprecated and won't work until it gets some updates.
+
+SSH, VNC, and graphical setups require extra configuration and may vary depending on host environment.
+>> VNC configuratuon is automated.
+
+
 
 ---
 
-## File Structure
+2. Manual
 
-- /home/user/.config/tigervnc/xstartup: Custom xstartup launching MATE session
+<Prerequisites>
 
-- /bin/safefox: Wrapper to launch Firefox with no sandbox errors on termux + proot environment.
+Before starting, ensure you have:
 
-- /home/user/theme: Opens theme download pages in Firefox
+Host environment: Termux (Android), Linux terminal, or equivalent.
 
-- /sndsrv: Pulseaudio TCP server launcher
+Network access: Stable internet connection.
 
-- /pinit, /cinit: Proot/chroot helper scripts
+Storage: At least 1.5 GiB free space.
 
----
+Installed tools:
 
-## Customization
+git (to clone this repository)
 
-- Easy to add or remove packages in the script (apk add lines).
+proot (for unprivileged containers)
 
-- Theme links can be edited in /home/user/theme to suit your taste.
 
-- Fonts installed in /home/user/.fonts (including D2Coding).
+<System checks>
 
-- Oh-My-Zsh with agnoster theme enabled for user shell.
+Verify that LD_PRELOAD is unset (the output of echo $LD_PRELOAD should be empty).
 
----
+Rootfs: Download a recent Alpine minirootfs tarball beforehand.
 
-## Notes
+Optional: VNC/SSH clients, proxy software, and familiarity with shell scripting.
 
-- Pulseaudio is set to allow local TCP connections. (without authorization)
 
-- Firefox runs with MOZ_FAKE_NO_SANDBOX=1 to work under proot or other nonroot environment. (This can be done conveniently using /bin/safefox)
+<Getting Started>
 
-- Script disables installation of -dev, -doc, and -lang subpackages to save space.
+1. Clone the repository:
 
-- Works well in Proot/Termux and chroot.
+git clone <repo-url> alpine-chroot-setup
+cd alpine-chroot-setup (if this is too long, consider naming it 'alps'.)
 
----
+The repository root becomes the container root directory.
 
-Screenshot Example
 
-- Will be added someday.
+2. Unpack an Alpine minirootfs tarball inside this directory.
 
----
 
-License
+3. Run the base installation script:
 
-Feel free to copy, modify, and share. No warranty.
+./pkg-alpine-base.sh
+
+
+4. Initialize the system with sysind.sh:
+
+./sysind.sh
+
+This sets up:
+
+-User account user (with password)
+
+-Default shell configuration (zsh + oh-my-zsh)
+
+-Fonts (D2Coding)
+
+-VNC/X11 startup defaults
+
+-Utility scripts in /bin
+
+
+All installation files are stored under /build/ for later inspection.
+
+
+5. Enter the container:
+
+As root: ./pinit
+
+As user: ./pinit user
+
+
+6. For bare-minimum use (e.g., only extracting other rootfs archives), you may skip sysind.sh.
+
+
+
+Utilities and Extensions
+The repository provides two main categories:
+
+Package scripts (pkg-*.sh)
+pkg-alpine-base.sh: Installs base packages and dependencies.
+pkg-alpine-min.sh: Minimal package set for lightweight setups.
+pkg-alpine-cqgw.sh: Gateway/communication-oriented package set.
+
+
+Extension scripts (ext-*.sh)
+ext-alpine-devel.sh: Adds development toolchains (gcc, clang, cmake, etc.).
+ext-alpine-editors.sh: Installs text editors (vim, nano, neovim, code-oss, uemacs, mg, etc.). Some are built from source.
+
+
+Init and management utilities
+pinit: chroot into the container via proot. Root previlege NOT required (./pinit [root or user]).
+cinit: Alternative init wrapper. Recommended for bare-metal usage, root previlege required for mounting needed volumes and calling chroot.
+initpty: Pseudo-terminal support for chroot(with su/sudo) environment.
+
+
+Tools (tools/ and utils/)
+
+rewire: Repair broken symlinks (useful when migrating containers).
+
+shocks / dshocks: Automate SOCKS5 proxy setup and teardown.
+
+swsh: Change default shell (chsh equivalent). usage: path/to/swsh [user] [current shell] [new shell]
+>> check /etc/passwd before running.
+
+tlch, trc, tzsh: Miscellaneous shell helpers. (tlch: launches tor according to the config file /utils/trc)
+
+
+Troubleshooting
+
+Script errors: Ensure you are inside the correct directory (the cloned repo root).
+
+Broken symlinks after migration: Use rewire to fix path issues. usage: path/to/rewire [previous chroot directory name] ('name' refers to the deepest directory of the path)
+
+Password/user creation issues: sysind.sh will override and set new passwords; you do not need to create them manually.
+
+Missing commands: Verify you ran pkg-alpine-base.sh before sysind.sh.
+
+VNC/X11 not working: Check that your host supports X11 forwarding or that you installed a VNC server and configured it correctly.
+
+Proot failing with LD_PRELOAD errors: Clear the variable:
+
+unset LD_PRELOAD
+
+
+Further Development
+
+This project is designed for extension. You can:
+
+Write new pkg-*.sh scripts for custom package bundles.
+
+Add ext-*.sh scripts for specialized environments (e.g., machine learning, web server stacks).
+
+Contribute utilities for smoother integration with SSH, VNC, or Docker.
+
+Experiment with system-independent wrappers (sysind) and distribution-specific tweaks (xfwd-alpine, xfwd-void, etc.).
