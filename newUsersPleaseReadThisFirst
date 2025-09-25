@@ -1,0 +1,24 @@
+Alpine Chroot Setup Kit
+
+[table of contents]
+
+1. Introduction
+- What is this?
+- Capabilities and Features
+- What can I do with this?
+
+2. Manual
+- Prerequisites
+- Getting Started
+- Utilities and Extensions
+- Troubleshooting
+- Further Development
+
+[writing guideline]
+<What is this?> Introduces the concept of automatizing proot container installation, as well as its advanages, such as enhanced convenience.
+<Capabilities and Features> Introduces how far the project can automatize lengthy, complicated processes for users.
+<What can I do with this?> Tells users some of the useful or enjoyable usage scenerios, such as linux-on-android experience, using inside iterm environment(maybe possible, not quite), bare-metal application, crude containers, other hobbies including system destruction, etc. This paragraph also contains some limitations of the setup kit.
+<Prerequisites> Includes termux or any other relevant linux terminal environment, internet connection, at least 1.5GiB of free space, git, proot, checking if LD_PRELOAD is empty(required for proot), alpine minirootfs, and a bit of knowledge for troubleshooting and customization. VNC and SSH client as well as proxy software can be optionaly included.
+<Getting Started> Tells users what to do right after cloning the repository. The repository itself becomes the root directory for a container. The installation process is written here, including the list and usage of installation scripts(basically pkg-alpine-base.sh and sysind.sh). The usage of pinit and cinit is written here.
+<Utilities and Extensions> Explains the usage of pkg- scripts other than pkg-alpine-base.sh, as well as ext- scripts, and utility scripts under tools/ and utils/. This also includes when to use each utilities(e.g. rewire when migrating, shocks for setting socks5 proxy, swsh for chsh)
+<Troubleshooting> Refers to the previous paragraph(s) for addressing possible issues(either human error or faulty script).
