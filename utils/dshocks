@@ -1,2 +1,2 @@
 #!/bin/sh
-sed -i 's,^export https\?_proxy=socks5h://localhost:.*$,,' .$(cat /etc/passwd | grep ^user: | grep -o /.\*sh$ | sed s,^.\*bin/,,)rc
+sed -i 's,^export https\?_proxy=socks5h://localhost:.*$,,' .$(cat /etc/passwd | grep ^$1: | grep -o /.\*sh$ | sed s,^.\*bin/,,)rc
