@@ -27,7 +27,7 @@ make install
 cd ..
 
 edver='ed-1.22'
-curl -o $edver.tar.lz https://ftp.gnu.org/gnu/ed/$edver.tar.lz
+curl -o $edver.tar.lz http://ftp.gnu.org/gnu/ed/$edver.tar.lz
 lzip -d $edver.tar.lz
 tar -xf $edver.tar
 cd $edver
