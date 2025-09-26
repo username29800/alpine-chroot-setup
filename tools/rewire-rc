@@ -16,7 +16,7 @@ cat links | while read line
 do
     link="$(echo $line | cut -d' ' -f1)"
     src="$(echo $line | cut -d' ' -f3 | sed 's,^'$prefix'/'$droot','$prefix'/'$nroot',')"
-    #ln -sfn "$src" "$link"
+    ln -sfn "$src" "$link"
     echo $src
     echo $link
     echo .
