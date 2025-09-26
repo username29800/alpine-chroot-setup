@@ -1,3 +1,4 @@
 #\!/bin/sh
 mkdir mem rmem sproc
+unset LD_PRELOAD
 proot -b /dev -b mem:/dev/shm -b /proc -b /sys -r . -0 -l --sysvipc /bin/su -l $1
