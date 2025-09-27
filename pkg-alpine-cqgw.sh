@@ -5,7 +5,7 @@ echo 'nameserver 1.1.1.2' > /etc/resolv.conf
 echo 'nameserver 1.0.0.2' >> /etc/resolv.conf
 chmod 1777 /dev/shm
 apk update
-echo openssh openbox xfe qterminal rofi mousepad 7zip unzip curl zsh git python3 perl gawk xz sudo vim xterm gcompat dbus dbus-x11 ibus ibus-hangul firefox font-noto-cjk font-noto-emoji sof-firmware alsa-ucm-conf xrandr tigervnc pulseaudio pavucontrol-qt tor lyrebird torsocks | tr ' ' \\n > list
+echo openssh openbox xfe konsole rofi mousepad 7zip unzip curl zsh git python3 perl gawk xz sudo vim xterm gcompat dbus dbus-x11 ibus ibus-hangul firefox font-noto-cjk font-noto-emoji sof-firmware alsa-ucm-conf xrandr tigervnc pulseaudio pavucontrol-qt tor lyrebird torsocks | tr ' ' \\n > list
 apk search eudev | grep \^eudev | sed 's,[-_]\d.*,,' >> list
 apk search xf86-video | grep \^xf86 | sed 's,[-_]\d.*,,' | sed 's,^,'"$1"',' >> list
 apk search libcanberra | grep \^lib | sed 's,[-_]\d.*,,' | sed 's,^,'"$1"',' >> list
