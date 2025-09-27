@@ -1,5 +1,0 @@
-#\!/bin/sh
-"$2"mount -t devpts devpts /dev/pts
-chmod 666 /dev/pts/ptmx
-su -l "$1"
-"$2"umount /dev/pts
