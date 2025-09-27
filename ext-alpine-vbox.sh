@@ -9,3 +9,5 @@ sed -i 's,^.*$,apk add &,' list
 sed -i 's,^apk add #.*\?$,,' list
 chmod 500 list
 ./list
+rc-update virtualbox-guest-additions boot
+rc-update virtualbox-drm-client default
