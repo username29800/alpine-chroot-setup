@@ -13,3 +13,4 @@ ln -sf /utils/sasshsvl /bin/saclisten
 chown -R sidearmconnect /home/sidearmconnect
 chown sidearmconnect /bin/saclisten
 chmod 744 /bin/saclisten
+sed -i "$(cat /etc/sudoers | grep -n 'root\s\{1,\}ALL' | head -n1 | cut -d: -f-1)"a"user ALL=(ALL:ALL) ALL" /etc/sudoers
