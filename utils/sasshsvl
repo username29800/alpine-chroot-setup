@@ -1,0 +1,2 @@
+#!/bin/sh
+/sbin/sshd -h /sacsshhkey/key -p "$1"
