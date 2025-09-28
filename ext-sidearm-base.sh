@@ -6,8 +6,8 @@
 echo 'GoPythonFlutter/%025%'"$1"'
 GoPythonFlutter/%025%'"$1" | passwd sidearmconnect
 mkdir /sacsshhkey /sacsshpkey
-ln -sf "$2" /sacsshhkey/key
-ln -sf "$2".pub /sacsshpkey/key
+ln -sf "$(pwd | sed s,/$,,)/$2" /sacsshhkey/key
+ln -sf "$(pwd | sed s,/$,,)/$2".pub /sacsshpkey/key
 ln -sf /utils/sasshsvl /home/sidearmconnect/listen
 ln -sf /utils/sasshsvl /bin/saclisten
 chown -R sidearmconnect /home/sidearmconnect
