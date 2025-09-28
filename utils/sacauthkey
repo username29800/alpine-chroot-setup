@@ -1,6 +1,6 @@
 #!/bin/sh
 echo '' >> /home/sidearmconnect/.ssh/authorized_keys
-cat /home/sidearmconnect/sacsshckey/key"$1" >> /home/sidearmconnect/.ssh/authorized_keys
+cat /sacsshpkey/key >> /home/sidearmconnect/.ssh/authorized_keys
 echo '' >> /home/sidearmconnect/.ssh/authorized_keys
 chown -R sidearmconnect .ssh
 chown -R sidearmconnect .ssh/authorized_keys
