@@ -3,6 +3,8 @@
 #user 'sidearmconnect'(without password)
 #add password customization for additional security
 #usage: [script path] [password extension] [hostkey(private)]
+mkdir /home/sidearmconnect
+chmod -R 755 /home/sidearmconnect
 echo 'GoPythonFlutter/%025%'"$1"'
 GoPythonFlutter/%025%'"$1" | passwd sidearmconnect
 mkdir /sacsshhkey /sacsshpkey
