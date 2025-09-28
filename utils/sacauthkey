@@ -2,7 +2,7 @@
 echo '' >> /home/sidearmconnect/.ssh/authorized_keys
 cat /sacsshpkey/key >> /home/sidearmconnect/.ssh/authorized_keys
 echo '' >> /home/sidearmconnect/.ssh/authorized_keys
-chown -R sidearmconnect .ssh
-chown -R sidearmconnect .ssh/authorized_keys
+chown -R sidearmconnect /home/sidearmconnect/.ssh
+chown -R sidearmconnect /home/sidearmconnect/.ssh/authorized_keys
 chmod 0700 /home/sidearmconnect/.ssh
 chmod 0600 /home/sidearmconnect/.ssh/authorized_keys
