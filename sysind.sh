@@ -1,6 +1,5 @@
 #!/bin/sh
 #prerequisites: unzip, coreutils or busybox, firefox, openbox, rofi, qterminal, xterm, tigervnc, pulseaudio, sudo, vim, git, zsh, user 'user' with home directory
-chown -R root /
 mkdir /build
 mkdir /rmem /mem
 chmod 0666 /rmem /mem
