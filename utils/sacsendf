@@ -1,0 +1,6 @@
+#!/bin/sh
+remote="$1"
+port="$2"
+fsource="$3"
+fdest="$4"
+scp -i /home/sidearmconnect/sacsshckey/key -O -P "$port" "$fsource" sidearmconnect@"$remote":/home/sidearmconnect/rcvdest/"$fdest"

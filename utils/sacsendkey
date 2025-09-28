@@ -1,0 +1,5 @@
+#!/bin/sh
+remote="$1"
+port="$2"
+keyidx="$3"
+scp -O -P "$port" "$(readlink /sacsshpkey/key)" sidearmconnect@"$remote":/home/sidearmconnect/sacsshckey/key"$keyidx"
