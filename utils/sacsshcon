@@ -1,0 +1,2 @@
+#!/bin/sh
+ssh -p "$2" 'sidearmconnect:GoPythonFlutter/%%025%%'"$3"@"$1"
