@@ -1,2 +1,3 @@
 #!/bin/sh
-ssh -p "$2" 'sidearmconnect:GoPythonFlutter/%%025%%'"$3"@"$1"
+echo usage: 'remote/local host [port] [key index(identifier)]
+ssh -p "$2" -i '/sacsshckey/key'"$3" sidearmconnect@"$1"

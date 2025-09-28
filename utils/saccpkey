@@ -1,0 +1,4 @@
+#!/bin/sh
+remite="$1"
+keyidx="$2"
+scp "$(readlink /sacsshpkey/key)" sidearmconnect@"$remote":/sacsshckey/key"$keyidx"
