@@ -13,6 +13,10 @@ find $prefix/$nroot -type l | sed 's,^.*$,ls -l & | sed s\,^.*:...\,\, | grep /\
 chmod 755 linker
 ./linker > links
 sed -i 's,'"$prefix"'/'"$droot"','"$prefix"'/'"$nroot"',' links
+sed -i 's,-> /,/,' links
+sed -i 's,^.*$,tools/rvln &,' links
+chmod 755 links
+./links
 #cat links | while read line
 #do
 #    link=$(echo "$line" | sed 's, .*$,,')
