@@ -6,15 +6,17 @@
 #example: if the old root is /chroot/alpine/a1 and the current one is /chroot/alpine/tests/t1
 # then prefix is /chroot/alpine/ (trailing slash is automatically removed if it exists), and
 # droot is a1/, nroot is tests/t1/
+runprefix=$"$4"
 droot="$(echo $2 | sed s,/$,,)"
 nroot="$(echo $3 | sed s,/$,,)"
 prefix="$(echo $1 | sed s,/$,,)"
+cd "$runprefix"
 find $prefix/$nroot -type l | sed 's,^.*$,ls -l & | sed s\,^.*:...\,\, | grep /\\.l2s\\.,' > linker
 sh linker > links
 cat links | while read line
 do
-    link="$(echo $line | sed 's, .*$,,')"
-    src="$(echo $line | sed 's,^[^ ]* .* ,,' | sed 's,^'$prefix'/'$droot','$prefix'/'$nroot',')"
+    link=$(echo "$line" | sed 's, .*$,,')
+    src=$(echo "$line" | sed 's,^[^ ]* .* ,,' | sed 's,^'"$prefix"'/'"$droot"','"$prefix"'/'"$nroot"',')
     ln -sfn "$src" "$link"
     echo $src
     echo $link
