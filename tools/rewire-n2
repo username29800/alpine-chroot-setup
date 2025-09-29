@@ -1,0 +1,24 @@
+#!/bin/sh
+#usage: path/to/rewire [prefix] [droot] [nroot]
+#the script should be executed within the target dir; pwd should be the target dir 
+#NOTE: '/' after the target directory name is strictly required, not to irreversibly break all the l2symlink directions.
+#Prefix is the common part between the old chroot path and current chroot path. Subpath specific to old root is droot, while its counterpart in new chroot path is nroot.
+#example: if the old root is /chroot/alpine/a1 and the current one is /chroot/alpine/tests/t1
+# then prefix is /chroot/alpine/ (trailing slash is automatically removed if it exists), and
+# droot is a1/, nroot is tests/t1/
+droot="$(echo $2 | sed s,/$,,)"
+nroot="$(echo $3 | sed s,/$,,)"
+prefix="$(echo $1 | sed s,/$,,)"
+find $prefix/$nroot -type l | sed 's,^.*$,ls -l & | sed s\,^.*:...\,\, | grep /\\.l2s\\.,' > linker
+chmod 755 linker
+./linker > links
+sed -i 's,'"$prefix"'/'"$droot"','"$prefix"'/'"$nroot"',' links
+#cat links | while read line
+#do
+#    link=$(echo "$line" | sed 's, .*$,,')
+#    src=$(echo "$line" | sed 's,^[^ ]* .* ,,' | sed 's,^'"$prefix"'/'"$droot"','"$prefix"'/'"$nroot"',')
+#    ln -sfn "$src" "$link"
+#    echo $src
+#    echo $link
+#    echo .
+#done
