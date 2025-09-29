@@ -10,7 +10,6 @@ runprefix=$"$4"
 droot="$(echo $2 | sed s,/$,,)"
 nroot="$(echo $3 | sed s,/$,,)"
 prefix="$(echo $1 | sed s,/$,,)"
-cd "$runprefix"
 find $prefix/$nroot -type l | sed 's,^.*$,ls -l & | sed s\,^.*:...\,\, | grep /\\.l2s\\.,' > linker
 sh linker > links
 cat links | while read line
