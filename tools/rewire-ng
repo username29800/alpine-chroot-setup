@@ -18,7 +18,7 @@ do
     lin=$(ls -l $line | sed 's,^.*:...,,' | grep /\\.l2s\\.)
     link="$(echo $lin | sed 's, .*$,,' | sed 's,/$,,')"
     src="$(echo $lin | sed 's,^[^ ]* .* ,,' | sed 's,^'$prefix'/'$droot','$prefix'/'$nroot',' | sed 's,/$,,')"
-    #ln -sfn "$src" "$link"
+    ln -sfn "$src" "$link"
     echo $src
     echo $link
     echo .
