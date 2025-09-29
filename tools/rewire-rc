@@ -9,12 +9,12 @@
 droot="$(echo $2 | sed s,/$,,)"
 nroot="$(echo $3 | sed s,/$,,)"
 prefix="$(echo $1 | sed s,/$,,)"
-find $prefix/$nroot -type l | sed 's,^.*$,ls -l & | cut -d: -f2- | cut -d" " -f2- | grep .l2s.,' > linker
+find $prefix/$nroot -type l | sed 's,^.*$,ls -l & | sed 's,^.*:...,,' | grep /\\.l2s\\.,' > linker
 sh linker > links
 cat links | while read line
 do
-    link="$(echo $line | cut -d' ' -f1 | sed 's,/$,,')"
-    src="$(echo $line | cut -d' ' -f3 | sed 's,^'$prefix'/'$droot','$prefix'/'$nroot',' | sed 's,/$,,')"
+    link="$(echo $line | sed 's, .*$,,' | sed 's,/$,,')"
+    src="$(echo $line | sed 's,^[^ ]* .* ,,' | sed 's,^'$prefix'/'$droot','$prefix'/'$nroot',' | sed 's,/$,,')"
     ln -sfn "$src" "$link"
     echo $src
     echo $link

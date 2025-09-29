@@ -10,12 +10,15 @@ droot="$(echo $2 | sed s,/$,,)"
 nroot="$(echo $3 | sed s,/$,,)"
 prefix="$(echo $1 | sed s,/$,,)"
 linker="$(find $prefix/$nroot -type l)"
+idx=0
 echo "$linker" | while read line
 do
-    lin=$(ls -l $line | cut -d: -f2- | cut -d" " -f2- | grep /.l2s.)
-    link="$(echo $lin | cut -d' ' -f1 | sed 's,/$,,')"
-    src="$(echo $lin | cut -d' ' -f3 | sed 's,^'$prefix'/'$droot','$prefix'/'$nroot',' | sed 's,/$,,')"
-    ln -sfn "$src" "$link"
+    idx=$(($idx+1))
+    echo $idx
+    lin=$(ls -l $line | sed 's,^.*:...,,' | grep /.l2s.)
+    link="$(echo $lin | sed 's, .*$,,' | sed 's,/$,,')"
+    src="$(echo $lin | sed 's,^[^ ]* .* ,,' | sed 's,^'$prefix'/'$droot','$prefix'/'$nroot',' | sed 's,/$,,')"
+    #ln -sfn "$src" "$link"
     echo $src
     echo $link
     echo .
