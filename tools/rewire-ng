@@ -15,7 +15,7 @@ echo "$linker" | while read line
 do
     idx=$(($idx+1))
     echo $idx
-    lin=$(ls -l $line | sed 's,^.*:...,,' | grep /.l2s.)
+    lin=$(ls -l $line | sed 's,^.*:...,,' | grep /\\.l2s\\.)
     link="$(echo $lin | sed 's, .*$,,' | sed 's,/$,,')"
     src="$(echo $lin | sed 's,^[^ ]* .* ,,' | sed 's,^'$prefix'/'$droot','$prefix'/'$nroot',' | sed 's,/$,,')"
     #ln -sfn "$src" "$link"
