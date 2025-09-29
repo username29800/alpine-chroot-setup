@@ -13,8 +13,8 @@ find $prefix/$nroot -type l | sed 's,^.*$,ls -l & | sed s\,^.*:...\,\, | grep /\
 sh linker > links
 cat links | while read line
 do
-    link="$(echo $line | sed 's, .*$,,' | sed 's,/$,,')"
-    src="$(echo $line | sed 's,^[^ ]* .* ,,' | sed 's,^'$prefix'/'$droot','$prefix'/'$nroot',' | sed 's,/$,,')"
+    link="$(echo $line | sed 's, .*$,,')"
+    src="$(echo $line | sed 's,^[^ ]* .* ,,' | sed 's,^'$prefix'/'$droot','$prefix'/'$nroot',')"
     ln -sfn "$src" "$link"
     echo $src
     echo $link
