@@ -24,3 +24,6 @@ echo "gsettings set org.mate.Marco.general titlebar-font 'Noto Sans CJK KR 11'" 
 echo "kill %1" >> /build/mate-config
 chmod 755 /build/mate-config
 su -lc 'dbus-launch sh /build/mate-config' user
+echo "#\!/bin/sh" > /home/user/theme
+echo 'safefox https://www.pling.com/p/1267246/ &' >> /home/user/theme
+echo 'safefox https://www.pling.com/p/1598493/ &' >> /home/user/theme
