@@ -1,2 +1,2 @@
 #!/bin/sh
-tor -f /utils/trc
+tor -f /afconf/trc

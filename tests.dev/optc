@@ -1,0 +1,9 @@
+#!/bin/sh
+instfile="$(cat $1)"
+optfile="$(cat $2)"
+echo '' > scrun/optc.out
+for i in $(seq 1 $(echo "$instfile" | wc -l))
+do
+echo $(echo "$instfile" | grep -n .\\? | grep ^$i: | sed 's,^[0-9]*:,,') $(echo "$optfile" | grep -n .\\? | grep ^$i: | sed 's,^[0-9]*:,,') >> scrun/optc.out
+done
+sh scrun/optc.out "$(echo $* | cut -d" " -f3-)"

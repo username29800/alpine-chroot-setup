@@ -1,0 +1,3 @@
+#!/bin/sh
+sed -i 's,'"$(cat /home/sidearmconnect/sacsshckey/key$1)"',,' /home/sidearmconnect/.ssh/authorized_keys
+sed -i 'N;s,^\n,,' /home/sidearmconnect/.ssh/authorized_keys
