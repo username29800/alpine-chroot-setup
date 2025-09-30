@@ -1,6 +1,6 @@
 #!/bin/sh
 cd /build
-apk search mate | grep \^mate | grep -v ^materia | sed 's,[-_]\d.*,,' >> list
+apk search mate | grep \^mate | grep -v ^materia | sed 's,[-_]\d.*,,' > list
 chmod 755 list
 ./list
 echo "#\!/bin/sh" > /build/mate-config
