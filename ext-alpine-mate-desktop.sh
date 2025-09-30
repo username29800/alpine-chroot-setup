@@ -2,6 +2,9 @@
 cd /build
 apk search mate | grep \^mate | grep -v ^materia | sed 's,[-_]\d.*,,' > list
 sed -i 's,^.*$,apk add &,' list
+sed -i 's,^.*-lang$,,' list
+sed -i 's,^.*-doc$,,' list
+sed -i 's,^.*-dev$,,' list
 chmod 755 list
 ./list
 echo "#\!/bin/sh" > /build/mate-config
