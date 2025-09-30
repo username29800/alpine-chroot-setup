@@ -22,6 +22,10 @@ echo installing recommended editors
 sleep .5
 /ext-alpine-editors.sh
 echo .
+echo installing mate desktop environment
+sleep .5
+/ext-alpine-mate-desktop.sh
+echo .
 echo Congratulations. Installation complete!
 echo Now you can explore your brand new alpine-chroot environment
 echo .
