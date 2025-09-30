@@ -30,4 +30,4 @@ su -lc 'dbus-launch sh /build/mate-config' user
 echo "#\!/bin/sh" > /home/user/theme
 echo 'safefox https://www.pling.com/p/1267246/ &' >> /home/user/theme
 echo 'safefox https://www.pling.com/p/1598493/ &' >> /home/user/theme
-sed -i 's,^openbox \?.*\?,mate-session' /home/user/.config/tigervnc/xstartup
+sed -i 's,^openbox \?.*\?,mate-session,' /home/user/.config/tigervnc/xstartup
