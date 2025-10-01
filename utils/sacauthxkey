@@ -1,0 +1,2 @@
+#!/bin/sh
+xauth add $(cat /home/sidearmconnect/rcvdest/xauthkey)

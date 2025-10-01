@@ -1,0 +1,6 @@
+#!/bin/sh
+host=$1
+port=$2
+line=$3
+xauth list | grep -n '.\?' | grep '^'$line':' | sed 's,^[0-9]*:,,' > /sacfwdkey/key
+/utils/sacsendf $host $port /sacfwdkey/key xauthkey
