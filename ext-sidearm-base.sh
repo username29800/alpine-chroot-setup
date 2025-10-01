@@ -10,7 +10,7 @@ rm /sacsshpkey/key
 echo 'GoPythonFlutter/%025%'"$1"'
 GoPythonFlutter/%025%'"$1" | passwd sidearmconnect
 mkdir /sacsshhkey /sacsshpkey /sacfwdkey /home/sidearmconnect/sacsshckey /home/sidearmconnect/rcvdest /home/sidearmconnect/.ssh
-chmod 0666 /sacfwdkey
+chmod 0777 /sacfwdkey
 ln -sf "$(pwd | sed s,/$,,)"/"$2" /sacsshhkey/key
 ln -sf "$(pwd | sed s,/$,,)"/"$2".pub /sacsshpkey/key
 ln -sf /utils/sasshsvl /home/sidearmconnect/listen
