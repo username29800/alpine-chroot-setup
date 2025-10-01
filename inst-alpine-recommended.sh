@@ -16,8 +16,8 @@ echo .
 echo installing and configuring linux-sidearm extension
 sleep .5
 mkdir /root/.ssh
-ssh-keygen -t rsa -N '' -f /home/root/.ssh/id_rsa
-/ext-sidearm-base '' /home/root/.ssh/id_rsa
+ssh-keygen -t rsa -N '' -f /root/.ssh/id_rsa
+/ext-sidearm-base.sh '' /root/.ssh/id_rsa
 echo .
 echo installing recommended editors
 sleep .5
